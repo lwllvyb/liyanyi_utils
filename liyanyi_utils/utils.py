@@ -6,6 +6,17 @@ import functools
 import time
 
 
+CRITICAL = 50
+FATAL = CRITICAL
+ERROR = 40
+WARNING = 30
+WARN = WARNING
+INFO = 20
+DEBUG = 10
+NOTSET = 0
+
+
+
 class Logger(object):
     def __init__(self, log_name, logger_name=None):
         '''
@@ -33,8 +44,10 @@ class Logger(object):
     def get_logger(self):
         return self.logger
 
+
 def new_logger(log_name, logger_name=None):
     return Logger(log_name, logger_name).get_logger()
+
 
 def func_info(func):
     @functools.wraps(func)
